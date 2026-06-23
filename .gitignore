@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+
+# Build outputs and caches
+dist/
+build/
+out/
+coverage/
+.nyc_output/
+.cache/
+.tmp/
+temp/
+tests/output/
+reports/
+artifacts/
+
+# Generated reports and scratch
+*.log
+*.tsbuildinfo
+*.zip
+*.tgz
+*.tmp
+*.bak
+*.orig
+*.rej
+*.swp
+*.swo
+
+# Local scratch files
+tmp_*.ts
+tmp_*.py
+
+# Environment and secrets
+.env
+.env.*
+*.local
+*.pem
+*.key
+*.crt
+*.cer
+*.pfx
+
+# OS and IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.code-workspace
+*.suo
+*.user
+*.userossc
+
+# Portfolio housekeeping
+PORTFOLIO_*.md
+_portfolio_notes/

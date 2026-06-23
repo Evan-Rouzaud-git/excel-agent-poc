@@ -1,0 +1,3176 @@
+{
+  "runs": [
+    {
+      "mode": "ollama",
+      "suites": [
+        "formula"
+      ],
+      "timeoutMs": 120000,
+      "perPromptMs": 120000,
+      "timestamp": "2026-01-29T14:39:32.319Z",
+      "suiteArg": "formula",
+      "gate1": 1,
+      "gate2": 1,
+      "timedOutCount": 0,
+      "avgPromptMs": 11783.285714285714,
+      "results": [
+        {
+          "id": "P06",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne Marge = Revenus - Dépenses.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajoute une colonne Marge = Revenus - Dépenses",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus] - [@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajoute une colonne Marge = Revenus - Dépenses",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus] - [@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajoute une colonne Marge = Revenus - Dépenses",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus] - [@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P07",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne % Marge = Marge / Revenus.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "apply_format",
+            "write_formula",
+            "apply_format"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter colonne % Marge",
+            "steps": [
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue"
+                  }
+                }
+              },
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "% Marge"
+                  },
+                  "formula": "=[@Revenus]/[@Revenus]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "0.00%"
+                }
+              },
+              {
+                "id": "fmt2",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue"
+                  }
+                }
+              }
+            ],
+            "confirmations": [
+              {
+                "id": "col_confirm",
+                "question": "Quelle colonne représente la marge dans la formule % Marge = Marge / Revenus ?",
+                "choices": [
+                  {
+                    "id": "depenses",
+                    "label": "Depenses"
+                  },
+                  {
+                    "id": "tva",
+                    "label": "TVA"
+                  },
+                  {
+                    "id": "autre",
+                    "label": "Autre (préciser)"
+                  },
+                  {
+                    "id": "erreur",
+                    "label": "Colonnes manquantes"
+                  }
+                ],
+                "required": true
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter colonne % Marge",
+            "steps": [
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue",
+                    "header": {
+                      "background": "#0e2a80",
+                      "fontColor": "#ffffff",
+                      "bold": true
+                    },
+                    "bandedRows": true,
+                    "columnWidth": "auto"
+                  }
+                }
+              },
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "% Marge"
+                  },
+                  "formula": "=[@Revenus]/[@Revenus]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "0.00%"
+                }
+              },
+              {
+                "id": "fmt2",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue",
+                    "header": {
+                      "background": "#0e2a80",
+                      "fontColor": "#ffffff",
+                      "bold": true
+                    },
+                    "bandedRows": true,
+                    "columnWidth": "auto"
+                  }
+                }
+              }
+            ],
+            "confirmations": [
+              {
+                "id": "col_confirm",
+                "question": "Quelle colonne représente la marge dans la formule % Marge = Marge / Revenus ?",
+                "choices": [
+                  {
+                    "id": "depenses",
+                    "label": "Depenses"
+                  },
+                  {
+                    "id": "tva",
+                    "label": "TVA"
+                  },
+                  {
+                    "id": "autre",
+                    "label": "Autre (préciser)"
+                  },
+                  {
+                    "id": "erreur",
+                    "label": "Colonnes manquantes"
+                  }
+                ],
+                "required": true
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter colonne % Marge",
+            "steps": [
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue",
+                    "header": {
+                      "bold": true,
+                      "background": "#0e2a80",
+                      "fontColor": "#ffffff"
+                    },
+                    "bandedRows": true,
+                    "columnWidth": "auto"
+                  }
+                }
+              },
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "% Marge"
+                  },
+                  "formula": "=[@Revenus]/[@Revenus]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "0.00%"
+                }
+              },
+              {
+                "id": "fmt2",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue",
+                    "header": {
+                      "bold": true,
+                      "background": "#0e2a80",
+                      "fontColor": "#ffffff"
+                    },
+                    "bandedRows": true,
+                    "columnWidth": "auto"
+                  }
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P08",
+          "suiteId": "formula",
+          "prompt": "Calcule la différence entre Revenus et Dépenses dans une nouvelle colonne.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Calculer la différence entre Revenus et Dépenses",
+            "steps": [
+              {
+                "id": "form1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Différence"
+                  },
+                  "formula": "=[@Revenus]-[@Dépenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Calculer la différence entre Revenus et Dépenses",
+            "steps": [
+              {
+                "id": "form1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Différence"
+                  },
+                  "formula": "=[@Revenus]-[@Dépenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Calculer la différence entre Revenus et Dépenses",
+            "steps": [
+              {
+                "id": "form1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Différence"
+                  },
+                  "formula": "=[@Revenus]-[@Dépenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P09",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne qui calcule Revenus - Depenses et appelle-la “Résultat”.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Résultat",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Résultat"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "Number"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Résultat",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Résultat"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "Number"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Résultat",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Résultat"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "Number"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P10",
+          "suiteId": "formula",
+          "prompt": "Rajoute une colonne “Ecart” avec la formule Revenus moins Depenses.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Ecart",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Ecart"
+                  },
+                  "formula": "=C2-B2",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Ecart",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Ecart"
+                  },
+                  "formula": "=C2-B2",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Ecart",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Ecart"
+                  },
+                  "formula": "=C2-B2",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P11",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne “Marge” (si ça écrase quelque chose, demande-moi).",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P12",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne “Marge” mais utilise la deuxième série de colonnes si tu vois des doublons.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula",
+            "apply_format"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajoute une colonne Marge",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=(Revenus-Depenses)/Revenus*100",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "0.00%"
+                }
+              },
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue"
+                  }
+                }
+              }
+            ],
+            "confirmations": [
+              {
+                "id": "col_check",
+                "question": "Utiliser les colonnes existantes (Depenses/Revenus) ou une autre série ?",
+                "choices": [
+                  {
+                    "id": "existing",
+                    "label": "Utiliser Depenses et Revenus"
+                  },
+                  {
+                    "id": "other",
+                    "label": "Utiliser une autre série de colonnes"
+                  }
+                ],
+                "required": true
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajoute une colonne Marge",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=(Revenus-Depenses)/Revenus*100",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "0.00%"
+                }
+              },
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue",
+                    "header": {
+                      "background": "#0e2a80",
+                      "fontColor": "#ffffff",
+                      "bold": true
+                    },
+                    "bandedRows": true,
+                    "columnWidth": "auto"
+                  }
+                }
+              }
+            ],
+            "confirmations": [
+              {
+                "id": "col_check",
+                "question": "Utiliser les colonnes existantes (Depenses/Revenus) ou une autre série ?",
+                "choices": [
+                  {
+                    "id": "existing",
+                    "label": "Utiliser Depenses et Revenus"
+                  },
+                  {
+                    "id": "other",
+                    "label": "Utiliser une autre série de colonnes"
+                  }
+                ],
+                "required": true
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajoute une colonne Marge",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=(Revenus-Depenses)/Revenus*100",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "0.00%"
+                }
+              },
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue",
+                    "header": {
+                      "bold": true,
+                      "background": "#0e2a80",
+                      "fontColor": "#ffffff"
+                    },
+                    "bandedRows": true,
+                    "columnWidth": "auto"
+                  }
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        }
+      ],
+      "totals": {
+        "chartsCreatedTotal": 0,
+        "formulasWrittenTotal": 7,
+        "confirmationsAskedTotal": 2,
+        "confirmationsAutoAnsweredTotal": 2,
+        "timeouts": 0,
+        "warningsTotal": 0,
+        "errorsTotal": 0,
+        "retryUsedCount": 0,
+        "fallbackUsedCount": 0,
+        "nonJsonCount": 0,
+        "sanitizeChangedCount": 0
+      },
+      "suiteSummaries": {
+        "formula": {
+          "prompts": 7,
+          "valid": 7,
+          "executed": 7
+        }
+      }
+    },
+    {
+      "mode": "ollama",
+      "suites": [
+        "formula"
+      ],
+      "timeoutMs": 120000,
+      "perPromptMs": 120000,
+      "timestamp": "2026-01-29T15:21:28.683Z",
+      "suiteArg": "formula",
+      "gate1": 1,
+      "gate2": 1,
+      "timedOutCount": 0,
+      "avgPromptMs": 9902.57142857143,
+      "results": [
+        {
+          "id": "P06",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne Marge = Revenus - Dépenses.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Dépenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Dépenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Dépenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P07",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne % Marge = Marge / Revenus.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajoute une colonne % Marge = Marge / Revenus",
+            "steps": [
+              {
+                "id": "form1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "% Marge"
+                  },
+                  "formula": "=(Revenus - Depenses)/Revenus",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajoute une colonne % Marge = Marge / Revenus",
+            "steps": [
+              {
+                "id": "form1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "% Marge"
+                  },
+                  "formula": "=(Revenus - Depenses)/Revenus",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajoute une colonne % Marge = Marge / Revenus",
+            "steps": [
+              {
+                "id": "form1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "% Marge"
+                  },
+                  "formula": "=(Revenus - Depenses)/Revenus",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P08",
+          "suiteId": "formula",
+          "prompt": "Calcule la différence entre Revenus et Dépenses dans une nouvelle colonne.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Calculer la différence entre Revenus et Dépenses",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Différence"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "Number"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Calculer la différence entre Revenus et Dépenses",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Différence"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "Number"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Calculer la différence entre Revenus et Dépenses",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Différence"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "Number"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P09",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne qui calcule Revenus - Depenses et appelle-la “Résultat”.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Résultat",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Résultat"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Résultat",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Résultat"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Résultat",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Résultat"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P10",
+          "suiteId": "formula",
+          "prompt": "Rajoute une colonne “Ecart” avec la formule Revenus moins Depenses.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Ecart",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Ecart"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Ecart",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Ecart"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Ecart",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Ecart"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P11",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne “Marge” (si ça écrase quelque chose, demande-moi).",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "form1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "form1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "form1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P12",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne “Marge” mais utilise la deuxième série de colonnes si tu vois des doublons.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "apply_format",
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue"
+                  }
+                }
+              },
+              {
+                "id": "form1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue",
+                    "header": {
+                      "background": "#0e2a80",
+                      "fontColor": "#ffffff",
+                      "bold": true
+                    },
+                    "bandedRows": true,
+                    "columnWidth": "auto"
+                  }
+                }
+              },
+              {
+                "id": "form1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue",
+                    "header": {
+                      "bold": true,
+                      "background": "#0e2a80",
+                      "fontColor": "#ffffff"
+                    },
+                    "bandedRows": true,
+                    "columnWidth": "auto"
+                  }
+                }
+              },
+              {
+                "id": "form1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        }
+      ],
+      "totals": {
+        "chartsCreatedTotal": 0,
+        "formulasWrittenTotal": 7,
+        "confirmationsAskedTotal": 0,
+        "confirmationsAutoAnsweredTotal": 0,
+        "timeouts": 0,
+        "warningsTotal": 0,
+        "errorsTotal": 0,
+        "retryUsedCount": 0,
+        "fallbackUsedCount": 0,
+        "nonJsonCount": 0,
+        "sanitizeChangedCount": 0
+      },
+      "suiteSummaries": {
+        "formula": {
+          "prompts": 7,
+          "valid": 7,
+          "executed": 7
+        }
+      }
+    },
+    {
+      "mode": "ollama",
+      "suites": [
+        "formula"
+      ],
+      "timeoutMs": 120000,
+      "perPromptMs": 120000,
+      "timestamp": "2026-01-29T15:30:34.996Z",
+      "suiteArg": "formula",
+      "gate1": 1,
+      "gate2": 1,
+      "timedOutCount": 0,
+      "avgPromptMs": 11845.857142857143,
+      "results": [
+        {
+          "id": "P06",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne Marge = Revenus - Dépenses.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P07",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne % Marge = Marge / Revenus.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "apply_format",
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter colonne % Marge",
+            "steps": [
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue"
+                  }
+                }
+              },
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "% Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]/[@Revenus]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "0.00%"
+                }
+              }
+            ],
+            "confirmations": [
+              {
+                "id": "col_marge",
+                "question": "La colonne \"% Marge\" utilise-t-elle la valeur de \"TVA\" au lieu de \"Marge\" ?",
+                "choices": [
+                  {
+                    "id": "tva",
+                    "label": "Oui, utiliser TVA"
+                  },
+                  {
+                    "id": "marge",
+                    "label": "Non, colonne Marge introuvable"
+                  }
+                ],
+                "required": true
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter colonne % Marge",
+            "steps": [
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue",
+                    "header": {
+                      "background": "#0e2a80",
+                      "fontColor": "#ffffff",
+                      "bold": true
+                    },
+                    "bandedRows": true,
+                    "columnWidth": "auto"
+                  }
+                }
+              },
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "% Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]/[@Revenus]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "0.00%"
+                }
+              }
+            ],
+            "confirmations": [
+              {
+                "id": "col_marge",
+                "question": "La colonne \"% Marge\" utilise-t-elle la valeur de \"TVA\" au lieu de \"Marge\" ?",
+                "choices": [
+                  {
+                    "id": "tva",
+                    "label": "Oui, utiliser TVA"
+                  },
+                  {
+                    "id": "marge",
+                    "label": "Non, colonne Marge introuvable"
+                  }
+                ],
+                "required": true
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter colonne % Marge",
+            "steps": [
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue",
+                    "header": {
+                      "bold": true,
+                      "background": "#0e2a80",
+                      "fontColor": "#ffffff"
+                    },
+                    "bandedRows": true,
+                    "columnWidth": "auto"
+                  }
+                }
+              },
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "% Marge"
+                  },
+                  "formula": "=([@Revenus]-[@Depenses])/[@Revenus]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "0.00%"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": true,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": "invalid_json_first_pass"
+        },
+        {
+          "id": "P08",
+          "suiteId": "formula",
+          "prompt": "Calcule la différence entre Revenus et Dépenses dans une nouvelle colonne.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Calculer la différence entre Revenus et Dépenses",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Différence"
+                  },
+                  "formula": "=C2-B2",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Calculer la différence entre Revenus et Dépenses",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Différence"
+                  },
+                  "formula": "=C2-B2",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Calculer la différence entre Revenus et Dépenses",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Différence"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P09",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne qui calcule Revenus - Depenses et appelle-la “Résultat”.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Résultat",
+            "steps": [
+              {
+                "id": "frm1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Résultat"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": [
+              {
+                "id": "fmt1",
+                "question": "Format de la colonne Résultat",
+                "choices": [
+                  {
+                    "id": "fmt1",
+                    "label": "Format numérique"
+                  },
+                  {
+                    "id": "fmt2",
+                    "label": "Format monnaie"
+                  },
+                  {
+                    "id": "fmt3",
+                    "label": "Format personnalisé"
+                  }
+                ],
+                "required": true
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Résultat",
+            "steps": [
+              {
+                "id": "frm1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Résultat"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": [
+              {
+                "id": "fmt1",
+                "question": "Format de la colonne Résultat",
+                "choices": [
+                  {
+                    "id": "fmt1",
+                    "label": "Format numérique"
+                  },
+                  {
+                    "id": "fmt2",
+                    "label": "Format monnaie"
+                  },
+                  {
+                    "id": "fmt3",
+                    "label": "Format personnalisé"
+                  }
+                ],
+                "required": true
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Résultat",
+            "steps": [
+              {
+                "id": "frm1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Résultat"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P10",
+          "suiteId": "formula",
+          "prompt": "Rajoute une colonne “Ecart” avec la formule Revenus moins Depenses.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Ecart",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "headerName": "Ecart"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Ecart",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "headerName": "Ecart"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Ecart",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "headerName": "Ecart"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P11",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne “Marge” (si ça écrase quelque chose, demande-moi).",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula",
+            "apply_format"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "0.00%"
+                }
+              },
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue"
+                  }
+                }
+              }
+            ],
+            "confirmations": [
+              {
+                "id": "confirm_overwrite",
+                "question": "La colonne \"Marge\" écrase-t-elle des données existantes ?",
+                "choices": [
+                  {
+                    "id": "yes",
+                    "label": "Oui, corrigez la formule"
+                  },
+                  {
+                    "id": "no",
+                    "label": "Non, continuez"
+                  }
+                ],
+                "required": true
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "0.00%"
+                }
+              },
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue",
+                    "header": {
+                      "background": "#0e2a80",
+                      "fontColor": "#ffffff",
+                      "bold": true
+                    },
+                    "bandedRows": true,
+                    "columnWidth": "auto"
+                  }
+                }
+              }
+            ],
+            "confirmations": [
+              {
+                "id": "confirm_overwrite",
+                "question": "La colonne \"Marge\" écrase-t-elle des données existantes ?",
+                "choices": [
+                  {
+                    "id": "yes",
+                    "label": "Oui, corrigez la formule"
+                  },
+                  {
+                    "id": "no",
+                    "label": "Non, continuez"
+                  }
+                ],
+                "required": true
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter colonne Marge",
+            "steps": [
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "0.00%"
+                }
+              },
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue",
+                    "header": {
+                      "bold": true,
+                      "background": "#0e2a80",
+                      "fontColor": "#ffffff"
+                    },
+                    "bandedRows": true,
+                    "columnWidth": "auto"
+                  }
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P12",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne “Marge” mais utilise la deuxième série de colonnes si tu vois des doublons.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "apply_format",
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajoute une colonne Marge",
+            "steps": [
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue",
+                    "header": {
+                      "background": "#0e2a80",
+                      "fontColor": "#ffffff",
+                      "bold": true
+                    },
+                    "bandedRows": true,
+                    "columnWidth": "auto"
+                  }
+                }
+              },
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=(Revenus - Depenses)/Revenus",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajoute une colonne Marge",
+            "steps": [
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue",
+                    "header": {
+                      "background": "#0e2a80",
+                      "fontColor": "#ffffff",
+                      "bold": true
+                    },
+                    "bandedRows": true,
+                    "columnWidth": "auto"
+                  }
+                }
+              },
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=(Revenus - Depenses)/Revenus",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajoute une colonne Marge",
+            "steps": [
+              {
+                "id": "fmt1",
+                "macro": "apply_format",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101"
+                  },
+                  "options": {
+                    "preset": "corporate_blue",
+                    "header": {
+                      "bold": true,
+                      "background": "#0e2a80",
+                      "fontColor": "#ffffff"
+                    },
+                    "bandedRows": true,
+                    "columnWidth": "auto"
+                  }
+                }
+              },
+              {
+                "id": "f1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=([@Revenus]-[@Depenses])/[@Revenus]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask",
+                  "numberFormat": "0.0%"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        }
+      ],
+      "totals": {
+        "chartsCreatedTotal": 0,
+        "formulasWrittenTotal": 7,
+        "confirmationsAskedTotal": 3,
+        "confirmationsAutoAnsweredTotal": 3,
+        "timeouts": 0,
+        "warningsTotal": 0,
+        "errorsTotal": 0,
+        "retryUsedCount": 1,
+        "fallbackUsedCount": 0,
+        "nonJsonCount": 0,
+        "sanitizeChangedCount": 0
+      },
+      "suiteSummaries": {
+        "formula": {
+          "prompts": 7,
+          "valid": 7,
+          "executed": 7
+        }
+      }
+    },
+    {
+      "mode": "ollama",
+      "suites": [
+        "formula"
+      ],
+      "timeoutMs": 120000,
+      "perPromptMs": 120000,
+      "timestamp": "2026-01-29T15:36:42.206Z",
+      "suiteArg": "formula",
+      "gate1": 0.7142857142857143,
+      "gate2": 0.7142857142857143,
+      "timedOutCount": 0,
+      "avgPromptMs": 16126.42857142857,
+      "results": [
+        {
+          "id": "P06",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne Marge = Revenus - Dépenses.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter une colonne Marge calculée comme Revenus - Dépenses",
+            "steps": [
+              {
+                "id": "add_margin_column",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter une colonne Marge calculée comme Revenus - Dépenses",
+            "steps": [
+              {
+                "id": "add_margin_column",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter une colonne Marge calculée comme Revenus - Dépenses",
+            "steps": [
+              {
+                "id": "add_margin_column",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P07",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne % Marge = Marge / Revenus.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "summarize_actions"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter une colonne % Marge calculée comme Marge / Revenus",
+            "steps": [
+              {
+                "id": "conf1",
+                "macro": "summarize_actions",
+                "params": {}
+              }
+            ],
+            "confirmations": [
+              {
+                "id": "conf1",
+                "question": "La colonne \"Marge\" n'existe pas dans le tableau. Voulez-vous utiliser une autre colonne (ex: Depenses) ou créer une colonne \"Marge\" calculée avant de continuer?",
+                "choices": [
+                  {
+                    "id": "use_depenses",
+                    "label": "Utiliser Depenses au lieu de Marge"
+                  },
+                  {
+                    "id": "create_marge",
+                    "label": "Créer une colonne Marge = Revenus - Depenses"
+                  },
+                  {
+                    "id": "other",
+                    "label": "Autre colonne (spécifier)"
+                  }
+                ],
+                "required": true
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter une colonne % Marge calculée comme Marge / Revenus",
+            "steps": [
+              {
+                "id": "conf1",
+                "macro": "summarize_actions",
+                "params": {}
+              }
+            ],
+            "confirmations": [
+              {
+                "id": "conf1",
+                "question": "La colonne \"Marge\" n'existe pas dans le tableau. Voulez-vous utiliser une autre colonne (ex: Depenses) ou créer une colonne \"Marge\" calculée avant de continuer?",
+                "choices": [
+                  {
+                    "id": "use_depenses",
+                    "label": "Utiliser Depenses au lieu de Marge"
+                  },
+                  {
+                    "id": "create_marge",
+                    "label": "Créer une colonne Marge = Revenus - Depenses"
+                  },
+                  {
+                    "id": "other",
+                    "label": "Autre colonne (spécifier)"
+                  }
+                ],
+                "required": true
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter une colonne % Marge calculée comme Marge / Revenus",
+            "steps": [
+              {
+                "id": "conf1",
+                "macro": "summarize_actions",
+                "params": {}
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P08",
+          "suiteId": "formula",
+          "prompt": "Calcule la différence entre Revenus et Dépenses dans une nouvelle colonne.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Calculer la différence entre Revenus et Dépenses",
+            "steps": [
+              {
+                "id": "diff1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Différence"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Calculer la différence entre Revenus et Dépenses",
+            "steps": [
+              {
+                "id": "diff1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Différence"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Calculer la différence entre Revenus et Dépenses",
+            "steps": [
+              {
+                "id": "diff1",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Différence"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": true,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": "invalid_json_first_pass"
+        },
+        {
+          "id": "P09",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne qui calcule Revenus - Depenses et appelle-la “Résultat”.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter une colonne calculant Revenus - Depenses appelée \"Résultat\"",
+            "steps": [
+              {
+                "id": "add_result_column",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Résultat"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter une colonne calculant Revenus - Depenses appelée \"Résultat\"",
+            "steps": [
+              {
+                "id": "add_result_column",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Résultat"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter une colonne calculant Revenus - Depenses appelée \"Résultat\"",
+            "steps": [
+              {
+                "id": "add_result_column",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Résultat"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        },
+        {
+          "id": "P10",
+          "suiteId": "formula",
+          "prompt": "Rajoute une colonne “Ecart” avec la formule Revenus moins Depenses.",
+          "validPlan": false,
+          "executedOk": false,
+          "errors": [
+            "json_parse_error"
+          ],
+          "steps": [],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": null,
+          "planSanitized": null,
+          "planFinalExecuted": null,
+          "failureStage": "planner",
+          "plannerRetryUsed": true,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": true,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": "invalid_json_first_pass"
+        },
+        {
+          "id": "P11",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne “Marge” (si ça écrase quelque chose, demande-moi).",
+          "validPlan": false,
+          "executedOk": false,
+          "errors": [
+            "json_parse_error"
+          ],
+          "steps": [],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": null,
+          "planSanitized": null,
+          "planFinalExecuted": null,
+          "failureStage": "planner",
+          "plannerRetryUsed": true,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": true,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": "invalid_json_first_pass"
+        },
+        {
+          "id": "P12",
+          "suiteId": "formula",
+          "prompt": "Ajoute une colonne “Marge” mais utilise la deuxième série de colonnes si tu vois des doublons.",
+          "validPlan": true,
+          "executedOk": true,
+          "errors": [],
+          "steps": [
+            "write_formula"
+          ],
+          "artifacts": 0,
+          "confirmationsCount": 0,
+          "warningsCount": 0,
+          "planParsed": {
+            "version": "1.0",
+            "goal": "Ajouter une colonne \"Marge\" avec la formule Revenus - Dépenses",
+            "steps": [
+              {
+                "id": "add_marge_column",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planSanitized": {
+            "version": "1.0",
+            "goal": "Ajouter une colonne \"Marge\" avec la formule Revenus - Dépenses",
+            "steps": [
+              {
+                "id": "add_marge_column",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ]
+          },
+          "planFinalExecuted": {
+            "version": "1.0",
+            "goal": "Ajouter une colonne \"Marge\" avec la formule Revenus - Dépenses",
+            "steps": [
+              {
+                "id": "add_marge_column",
+                "macro": "write_formula",
+                "params": {
+                  "target": {
+                    "blockRef": "Sheet1!A1:I101",
+                    "writeMode": "newColumnRight",
+                    "headerName": "Marge"
+                  },
+                  "formula": "=[@Revenus]-[@Depenses]",
+                  "fillDown": true,
+                  "ifOverwrite": "ask"
+                }
+              }
+            ],
+            "confirmations": []
+          },
+          "workbookSummary": {
+            "sheetCount": 1,
+            "sheets": [
+              {
+                "name": "Sheet1",
+                "tables": [],
+                "rangeCount": 1
+              }
+            ]
+          },
+          "plannerRetryUsed": false,
+          "plannerFallbackUsed": false,
+          "plannerOutputWasNonJson": false,
+          "plannerSanitizeChangedPlan": false,
+          "plannerParseError": null,
+          "plannerSanitizeNotes": [],
+          "plannerRetryReason": null
+        }
+      ],
+      "totals": {
+        "chartsCreatedTotal": 0,
+        "formulasWrittenTotal": 4,
+        "confirmationsAskedTotal": 1,
+        "confirmationsAutoAnsweredTotal": 1,
+        "timeouts": 0,
+        "warningsTotal": 0,
+        "errorsTotal": 2,
+        "retryUsedCount": 3,
+        "fallbackUsedCount": 0,
+        "nonJsonCount": 2,
+        "sanitizeChangedCount": 0
+      },
+      "suiteSummaries": {
+        "formula": {
+          "prompts": 7,
+          "valid": 5,
+          "executed": 5
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+/* Context Debug task pane */
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #f8f8f8;
+}
+
+.ms-welcome__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 12px;
+}
+
+.app-root {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 16px 24px;
+}
+
+.tab-panel {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tab-panel.active {
+  display: flex;
+}
+
+.tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.tab-button {
+  border: 1px solid #d0d0d0;
+  background: #f5f5f5;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tab-button.active {
+  background: #0078d4;
+  color: #fff;
+  border-color: #0078d4;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.log-panel {
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  max-height: 150px;
+}
+
+.log-panel__header {
+  padding: 6px 10px;
+  font-weight: 600;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.log-lines {
+  padding: 6px 10px;
+  overflow-y: auto;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
+.log-line.info { color: #107c10; }
+.log-line.warn { color: #d83b01; }
+.log-line.error { color: #c50f1f; }
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.status {
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+}
+
+.status[data-tone="success"] {
+  border-color: #0078d4;
+  color: #0078d4;
+}
+
+.status[data-tone="error"] {
+  border-color: #c50f1f;
+  color: #c50f1f;
+}
+
+.summary {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.json-panel {
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+  max-height: 60vh;
+}
+
+.json-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e1e1e1;
+  font-weight: 600;
+}
+
+.json-viewer {
+  flex: 1;
+  margin: 0;
+  padding: 12px;
+  overflow: auto;
+  font-size: 12px;
+  background: #0d1117;
+  color: #d8e6ff;
+  border-radius: 0 0 6px 6px;
+}
+
+button.ms-Button {
+  border: none;
+  cursor: pointer;
+}
+
+button.ms-Button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.agent-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.plan-input {
+  width: 100%;
+  min-height: 140px;
+  resize: vertical;
+  font-family: "Consolas", monospace;
+  font-size: 12px;
+  padding: 8px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+}
+
+.agent-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.agent-label {
+  font-weight: 600;
+}
+
+.confirmation-panel, .artifact-panel {
+  background: #fff;
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.confirmation-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.confirmation-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.artifact-list {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 12px;
+}
+
+.status.small {
+  font-size: 11px;
+  padding: 4px 8px;
+}
+
+#llmErrors {
+  white-space: pre-wrap;
+}
+.agent-actions {
+  display: flex;
+  gap: 6px;
+}

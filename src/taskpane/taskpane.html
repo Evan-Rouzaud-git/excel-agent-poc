@@ -1,0 +1,128 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Excel Agent V1</title>
+
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <link rel="stylesheet" href="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-core/11.1.0/css/fabric.min.css"/>
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric">
+    <header class="ms-welcome__header ms-bgColor-neutralLighter">
+        <img width="64" height="64" src="../../assets/logo-filled.png" alt="Portfolio Demo" title="Portfolio Demo" />
+        <div>
+            <h1 class="ms-font-su">Excel Agent V1 (portfolio demo)</h1>
+            <div class="subtitle">Context Debug + execution de plans</div>
+        </div>
+    </header>
+    <section id="sideload-msg" class="ms-welcome__main">
+        <h2 class="ms-font-xl">Please <a target="_blank" href="https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing">sideload</a> your add-in to see app body.</h2>
+    </section>
+    <main id="app-body" class="app-root" style="display: none;">
+        <div class="tabs">
+            <button class="tab-button active" data-tab="context-view">Context Debug</button>
+            <button class="tab-button" data-tab="agent-view">Agent (Plan)</button>
+            <button class="tab-button" data-tab="planner-view">LLM Planner</button>
+        </div>
+
+        <section id="context-view" class="tab-panel active">
+            <div class="controls">
+                <button id="refresh-context" class="ms-Button ms-Button--primary"><span class="ms-Button-label">Refresh Context</span></button>
+                <label class="toggle"><input type="checkbox" id="toggle-log" /> Debug: log timings</label>
+                <label class="toggle"><input type="checkbox" id="toggle-verbose" /> Verbose logs</label>
+                <button id="clear-logs" class="ms-Button ms-Button--small"><span class="ms-Button-label">Clear Logs</span></button>
+            </div>
+            <div id="status" class="status" data-tone="info">Idle</div>
+            <div id="summary" class="summary"></div>
+            <div class="log-panel">
+                <div class="log-panel__header">Logs</div>
+                <div id="log-lines" class="log-lines"></div>
+            </div>
+            <div class="json-panel">
+                <div class="json-header">
+                    <span>Workbook Context Snapshot</span>
+                    <button id="copy-json" class="ms-Button ms-Button--small"><span class="ms-Button-label">Copy JSON</span></button>
+                </div>
+                <pre id="context-json" class="json-viewer"></pre>
+            </div>
+        </section>
+
+        <section id="agent-view" class="tab-panel">
+            <div class="agent-controls">
+                <div class="agent-row">
+                    <label class="agent-label">Plan JSON</label>
+                    <div class="agent-actions">
+                        <button id="copy-agent-plan" class="ms-Button ms-Button--small"><span class="ms-Button-label">Copy Plan</span></button>
+                        <button id="clear-agent-logs" class="ms-Button ms-Button--small"><span class="ms-Button-label">Clear Logs</span></button>
+                    </div>
+                </div>
+                <textarea id="plan-input" class="plan-input" placeholder='{"version":"1.0","goal":"...", "steps":[...]}'></textarea>
+                <div class="agent-row">
+                    <button id="run-plan" class="ms-Button ms-Button--primary"><span class="ms-Button-label">Run Plan</span></button>
+                    <span id="agent-status" class="status small" data-tone="info">Idle</span>
+                </div>
+            </div>
+            <div class="log-panel">
+                <div class="log-panel__header">Agent Logs</div>
+                <div id="agent-log-lines" class="log-lines"></div>
+            </div>
+            <div id="agent-confirmations" class="confirmation-panel"></div>
+            <div id="agent-artifacts" class="artifact-panel"></div>
+        </section>
+
+        <section id="planner-view" class="tab-panel">
+            <div class="agent-controls">
+                <div class="agent-row">
+                    <label class="agent-label">User prompt</label>
+                    <span id="planner-status" class="status small" data-tone="info">Idle</span>
+                </div>
+                <textarea id="llmPrompt" class="plan-input" placeholder="Décris le résultat souhaité..."></textarea>
+                <div class="agent-row">
+                    <label class="agent-label">Modèle Ollama</label>
+                    <select id="ollama-model">
+                        <option value="qwen3:8b">qwen3:8b</option>
+                        <option value="qwen3:14b">qwen3:14b</option>
+                        <option value="mistral:latest">mistral:latest</option>
+                        <option value="ministral-3:14b">ministral-3:14b</option>
+                    </select>
+                </div>
+                <div class="agent-row">
+                    <button id="btnWritePlan" class="ms-Button ms-Button--primary"><span class="ms-Button-label">Écrire le plan</span></button>
+                    <button id="btnWriteAndRun" class="ms-Button ms-Button--default"><span class="ms-Button-label">Écrire &amp; exécuter</span></button>
+                </div>
+            </div>
+            <div class="json-panel">
+                <div class="json-header">
+                    <span>Plan généré</span>
+                    <div class="agent-actions">
+                        <button id="copy-llm-plan" class="ms-Button ms-Button--small"><span class="ms-Button-label">Copy Plan</span></button>
+                        <button id="copy-llm-errors" class="ms-Button ms-Button--small"><span class="ms-Button-label">Copy Errors</span></button>
+                    </div>
+                </div>
+                <pre id="llmPlanOutput" class="json-viewer"></pre>
+            </div>
+            <div class="json-panel">
+                <div class="json-header">
+                    <span>Modifications du réparateur</span>
+                </div>
+                <div id="repairer-notes" class="log-lines small"></div>
+            </div>
+            <div class="json-panel">
+                <div class="json-header">
+                    <span>Raw LLM output</span>
+                    <button id="copy-llm-raw" class="ms-Button ms-Button--small"><span class="ms-Button-label">Copy Raw</span></button>
+                </div>
+                <pre id="llmRawOutput" class="json-viewer"></pre>
+            </div>
+            <div id="llmErrors" class="status" data-tone="info">Prêt</div>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+﻿[
+  {"id":"P01","prompt":"Mets ce tableau au format entreprise.","expect":{"hasMacro":["apply_format"]}},
+  {"id":"P02","prompt":"Mets les en-têtes en bleu entreprise et ajuste la largeur des colonnes.","expect":{"hasMacro":["apply_format"]}},
+  {"id":"P03","prompt":"Fais un rendu propre pour présentation sur ce tableau.","expect":{"hasMacro":["apply_format"]}},
+  {"id":"P04","prompt":"Gèle la première ligne et mets le tableau lisible.","expect":{"hasMacro":["apply_format"]}},
+  {"id":"P05","prompt":"Remets tout ça au propre : titres/entêtes bien visibles, colonnes ajustées.","expect":{"hasMacro":["apply_format"]}},
+
+  {"id":"P06","prompt":"Ajoute une colonne Marge = Revenus - Dépenses.","expect":{"hasMacro":["write_formula"]}},
+  {"id":"P07","prompt":"Ajoute une colonne % Marge = Marge / Revenus.","expect":{"hasMacro":["write_formula"]}},
+  {"id":"P08","prompt":"Calcule la différence entre Revenus et Dépenses dans une nouvelle colonne.","expect":{"hasMacro":["write_formula"]}},
+  {"id":"P09","prompt":"Ajoute une colonne qui calcule Revenus - Depenses et appelle-la “Résultat”.","expect":{"hasMacro":["write_formula"]}},
+  {"id":"P10","prompt":"Rajoute une colonne “Ecart” avec la formule Revenus moins Depenses.","expect":{"hasMacro":["write_formula"]}},
+  {"id":"P11","prompt":"Ajoute une colonne “Marge” (si ça écrase quelque chose, demande-moi).","expect":{"hasMacro":["write_formula"]}},
+  {"id":"P12","prompt":"Ajoute une colonne “Marge” mais utilise la deuxième série de colonnes si tu vois des doublons.","expect":{"hasMacro":["write_formula"]}},
+
+  {"id":"P13","prompt":"Fais un graphique des revenus par mois.","expect":{"hasMacro":["create_chart"]}},
+  {"id":"P14","prompt":"Fais un graphique des dépenses par mois.","expect":{"hasMacro":["create_chart"]}},
+  {"id":"P15","prompt":"Fais un graphique de la marge par mois.","expect":{"hasMacro":["create_chart"]}},
+  {"id":"P16","prompt":"Fais un graphique comparant Dépenses et Revenus par mois.","expect":{"hasMacro":["create_chart"]}},
+  {"id":"P17","prompt":"Fais un graphique ligne des revenus par mois.","expect":{"hasMacro":["create_chart"]}},
+  {"id":"P18","prompt":"Mets le graphique des revenus à droite du tableau.","expect":{"hasMacro":["create_chart"]}},
+
+  {"id":"P19","prompt":"Prépare ce tableau pour une présentation : mise en forme entreprise + colonne marge + graphique de la marge.","expect":{"hasMacro":["apply_format","write_formula","create_chart"]}},
+  {"id":"P20","prompt":"Fais un rendu décisionnel : tableau propre + marge + graphique des revenus.","expect":{"hasMacro":["apply_format","write_formula","create_chart"]}},
+
+  {"id":"P21","prompt":"Calcule la moyenne des dépenses par catégorie et ajoute une colonne correspondante.","expect":{"hasMacro":["write_formula"]}},
+  {"id":"P22","prompt":"Calcule le total des dépenses pour le mois de décembre et place le résultat à droite du tableau.","expect":{"hasMacro":["write_formula","place_output"]}},
+  {"id":"P23","prompt":"Affiche le top 5 des catégories par dépenses et crée un graphique.","expect":{"hasMacro":["write_formula","create_chart","place_output"]}},
+  {"id":"P24","prompt":"Ajoute une colonne Variation MoM des revenus (revenu courant moins revenu précédent).","expect":{"hasMacro":["write_formula"]}},
+  {"id":"P25","prompt":"Ajoute une colonne taux de croissance des revenus (MoM) en pourcentage.","expect":{"hasMacro":["write_formula"]}},
+  {"id":"P26","prompt":"Ajoute un ratio Dépenses/Revenus et indique dans une colonne si le ratio dépasse 80%.","expect":{"hasMacro":["write_formula","apply_format"]}},
+  {"id":"P27","prompt":"Ajoute une moyenne mobile sur 10 lignes des revenus dans une nouvelle colonne.","expect":{"hasMacro":["write_formula"]}},
+  {"id":"P28","prompt":"Crée un graphique comparant revenus et dépenses uniquement pour la région Ouest.","expect":{"hasMacro":["create_chart"]}},
+  {"id":"P29","prompt":"Mets en forme les lignes où les dépenses sont négatives pour les rendre visibles.","expect":{"hasMacro":["apply_format"]}},
+  {"id":"P30","prompt":"Ajoute une colonne 'A vérifier' pour les lignes dont le statut est 'En retard'.","expect":{"hasMacro":["write_formula","apply_format"]}},
+
+  {"id":"joinA","prompt":"Réalise un left join entre les feuilles Travaux et Projet en reliant ptvx_id avec la colonne Projet. Garde uniquement ptvx_id, charge_aff_code, tache_nom, m2 et Hab, écris le résultat sur une nouvelle feuille sans modifier les sources.","note":"Cas 1 : left join clé évidente + sous-ensemble de colonnes, sortie nouvelle feuille.","expect":{"hasMacro":["join_tables"]}},
+  {"id":"joinB","prompt":"Fais un inner join entre Travaux.ptvx_id et Projet.Projet, conserve les deux colonnes clé plus Typologie et code.","note":"Cas 2 : inner join avec conservation des deux clés.","expect":{"hasMacro":["join_tables"]}},
+  {"id":"joinC","prompt":"Garde uniquement les lignes de Travaux qui n’ont pas de correspondance dans Projet quand on relie ptvx_id avec Projet. Affiche ptvx_id et tache_nom sur une nouvelle feuille.","note":"Cas 3 : anti-left pour ressortir les non-correspondances réelles.","expect":{"hasMacro":["join_tables"]}},
+  {"id":"joinD","prompt":"Associe les deux tables sur le nom de projet même si la casse ou les espaces diffèrent (ptvx_id vs Projet, insensible à la casse/espaces), en conservant toutes les lignes correspondantes (left join) et en gardant ptvx_id, Projet, Typologie, tache_nom. Résultat sur une nouvelle feuille.","note":"Cas 4 : clé « bruitée » (case_insensitive_trim) couvrant robustesse de matching.","expect":{"hasMacro":["join_tables"]}},
+  {"id":"P05_join","prompt":"Prends les données des 2 tableaux et concatène les données avec Projet, codes, début travaux et fin travaux.","expect":{"hasMacro":["join_tables"]}},
+  {"id":"P06_join","prompt":"Prends les données des 2 tableaux et concatène les données avec Projet, responsable, nombre de logements, SHAB et typologie.","expect":{"hasMacro":["join_tables"]}},
+
+  {"id":"TV1","prompt":"Prépare une vue des projets avec seulement Projet, Ville, Début EDP et Fin EDP.","expect":{"hasMacro":["table_view"]}},
+  {"id":"TV2","prompt":"Renomme la colonne \"Fin EDP\" en \"Fin Etude de Prix\" et garde uniquement Projet et Ville.","expect":{"hasMacro":["table_view"]}},
+  {"id":"TV3","prompt":"Garde uniquement les lignes où la Ville est renseignée et affiche Projet, Ville, Début EDP, Fin EDP.","expect":{"hasMacro":["table_view"]}},
+  {"id":"TV4","prompt":"Conserve les projets dont la Ville contient \"Mar\" et montre Projet et Ville.","expect":{"hasMacro":["table_view"]}},
+  {"id":"TV5","prompt":"Trie la vue par Début EDP croissant en gardant Projet et Début EDP.","expect":{"hasMacro":["table_view"]}},
+  {"id":"TV6","prompt":"Calcule la densité en m2/hab puis extrait le projet et la densité trié par densité croissante","expect":{"hasMacro":["table_view","write_formula"]}}
+]
