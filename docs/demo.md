@@ -128,4 +128,4 @@ This order shows the intended control flow: inspect first, then format, then com
 
 ## Demo Video
 
-Demo video: [demo link](https://github.com/Evan-Rouzaud-git/excel-agent-poc/releases/tag/demo-v1)
+Demo video: [Download the full 1 min 15 demo video](https://github.com/Evan-Rouzaud-git/excel-agent-poc/releases/tag/demo-v1)
