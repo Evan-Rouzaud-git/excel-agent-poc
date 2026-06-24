@@ -20,7 +20,7 @@ This project demonstrates a spreadsheet agent built for control, not demo theate
   </a>
 </p>
 
-The short preview shows the main workflow: data quality audit, controlled table formatting with the `corporate_blue` preset, margin formula generation, and chart creation from workbook data.
+The short preview shows the main workflow: controlled table formatting with the `corporate_blue` preset, margin formula generation and chart creation from workbook data.
 
 ## Demo Overview
 
