@@ -6,16 +6,32 @@ A local-first Office.js Excel add-in that shows how an AI assistant can act on w
 
 This project demonstrates a spreadsheet agent built for control, not demo theater. It turns a workbook context snapshot and a user request into a validated execution plan, then runs only a known set of macros. That makes the add-in useful for a portfolio because it combines AI, product thinking, and practical runtime safety.
 
+## Demo Preview
+
+<p align="center">
+  <a href="https://github.com/Evan-Rouzaud-git/excel-agent-poc/releases/tag/demo-v1">
+    <img src="assets/excel-agent-demo.gif" alt="Excel Agent demo preview" width="900">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Evan-Rouzaud-git/excel-agent-poc/releases/tag/demo-v1">
+    <strong>Watch the full 1 min 15 demo video</strong>
+  </a>
+</p>
+
+The short preview shows the main workflow: data quality audit, controlled table formatting with the `corporate_blue` preset, margin formula generation, and chart creation from workbook data.
+
 ## Demo Overview
 
 The validated Excel demo covers four realistic tasks:
 
 1. Audit missing values, anomalies, and duplicates in a table.
-2. Apply the `corporate_blue` formatting preset.
-3. Add a `Marge` column calculated from `ChiffreAffaires - Cout`.
-4. Create a chart of `ChiffreAffaires` by `Mois`.
+2. Apply the corporate_blue formatting preset.
+3. Add a Marge column calculated from ChiffreAffaires - Cout.
+4. Create a chart of ChiffreAffaires by Mois.
 
-The demo prompts are intentionally written in French because the original target environment used French Excel and French-speaking business users. The repository documentation stays in English for GitHub readability. See [docs/demo.md](docs/demo.md) for the dataset and the exact prompts.
+The demo prompts are intentionally written in French because the original target environment used French Excel and French-speaking business users. The repository documentation stays in English for GitHub readability. See [docs/demo.md](docs/demo.md) for the dataset and exact prompts.
 
 ## What the Project Does
 
